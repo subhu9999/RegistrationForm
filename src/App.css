@@ -2,37 +2,113 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.error-validate{
+  display: table;
+  margin: 0 auto;
+  margin-bottom: 4px !important;
+  color: red;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.div-redux-form{
+  flex: block;
+  position: fixed; 
+  cursor: pointer;
+  margin-left: 25px;
+  margin-top: -50px;
+  border-radius: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.form{
+  margin: 0 auto;
+}
+
+.div-large{
+  margin: 0 auto;
+}
+
+
+h1{
+  text-align: center;
+  margin: 2rem 0;
+  letter-spacing: -1px;
+  color:"black";
+}
+
+
+.button-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+button{
+  flex-basis: 48%;
+  color: red;
+  font-size: 15px;
+  border: 2px solid #f2f2f2;
+  line-height: 2;
+  padding: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link{
+    flex-basis: 48%;
+    color: red;
+    font-size: 15px;
+    border: 2px solid #f2f2f2;
+    line-height: 2;
+    padding: 5px;
+}
+
+
+.form{
+  margin: 0 auto;
+  max-width: 360px;
+  padding: 45px;
+  text-align: center;
+}
+
+.form input{
+  font-family: sans-serif;
+  background: #f2f2f2;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 0 0 15px;
+}
+
+.form button{
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  background: #065784;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  color: #f2f2f2;
+  cursor: pointer;
+}
+
+.form button:hover{
+  background: grey;
+}
+
+button:hover{
+  border: 1px solid grey;
+}
+
+.link{
+  color: black;
+  text-decoration: none;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
