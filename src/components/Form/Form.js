@@ -1,8 +1,9 @@
-import React,{useState} from "react";
-import { Field, reduxForm } from "redux-form";
-import {connect} from "react-redux";
+import React, { useState } from "react";
+import { Field, reduxForm,reset } from "redux-form";
+import { connect,useDispatch } from "react-redux";
 import normalizePhone from "../../helpers/normalizePhoneNumber";
 import normalizeSalary from "../../helpers/normalizeSalary";
+
 
 const required = (value) =>
   value || typeof value === "number" ? undefined : "Required";
@@ -17,11 +18,11 @@ const renderField = ({
   type,
   input,
   meta: { touched, error },
-  disabled
+  disabled,
 }) => (
   <div className="input-row">
     <label>{label}</label>
-    <input {...input} type={type} disabled={disabled}/>
+    <input {...input} type={type} disabled={disabled} />
     {touched && error && (
       <span className="error error-validate"> {label + " " + error}</span>
     )}
@@ -29,15 +30,35 @@ const renderField = ({
 );
 
 let UserForm = (props) => {
+  const [user, setUser] = useState("");
+  const [done, setDone] = useState(false);
+
   const { handleSubmit } = props;
- 
+
+  const dispatch = useDispatch();
 
   const onSubmit = (values) => {
     console.log(values);
+    setUser(values.firstName);
+    setDone(true);
+
+    dispatch(reset("user"));
+    // alert(values.firstName + " you have successfully registered !");
   };
+
+  if (done) {
+    return (
+      <div>
+        <h1> Account Created successfully For : {user} </h1>
+        <button onClick={() => setDone(false)}>create new</button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <h1>Please Register To Continue...</h1>
+
       <div>
         <Field
           name="firstName"
@@ -116,15 +137,15 @@ let UserForm = (props) => {
 };
 
 const mapStateToProps = (state, props) => ({
-  initialValues: props.initialValues, // retrieve name from redux store 
-})
+  initialValues: props.initialValues, // retrieve name from redux store
+});
 
-UserForm = connect(
-  mapStateToProps
-)(reduxForm({
-   form: 'user', // a unique identifier for this form
-  enableReinitialize: true
-})(UserForm))
+UserForm = connect(mapStateToProps)(
+  reduxForm({
+    form: "user", // a unique identifier for this form
+    enableReinitialize: true,
+  })(UserForm)
+);
 
 // UserForm = reduxForm({
 //   // a unique name for the form

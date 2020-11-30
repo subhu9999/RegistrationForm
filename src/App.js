@@ -9,7 +9,6 @@ const GENDER = "MALE";
 function App() {
   return (
     <div className="App">
-      <h1>Please Register To Continue...</h1>
       <Form initialValues={{firstName: USER_NAME,gender: GENDER,address: ADDRESS}}/>
     </div>
   );
